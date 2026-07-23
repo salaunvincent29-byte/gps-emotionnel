@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f2d5c">
+  <meta name="description" content="GPS émotionnel de poche : un parcours guidé, une question à la fois, pour formuler une hypothèse émotionnelle à partir des sensations corporelles.">
+  <title>GPS émotionnel</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">Outil de poche • fonctionnement hors ligne</p>
+      <h1>GPS émotionnel</h1>
+      <p class="subtitle">Une question à la fois, à partir du corps.</p>
+    </div>
+    <button id="installButton" class="icon-button hidden" type="button" aria-label="Installer l’application">Installer</button>
+  </header>
+
+  <nav class="tabs" aria-label="Navigation principale">
+    <button class="tab active" type="button" data-view="journey" aria-current="page">Parcours</button>
+    <button class="tab" type="button" data-view="history">Historique</button>
+    <button class="tab" type="button" data-view="references">Repères</button>
+    <button class="tab" type="button" data-view="settings">Réglages</button>
+  </nav>
+
+  <main id="main" class="app-main">
+    <section id="journeyView" class="view active" aria-labelledby="journeyTitle">
+      <div class="journey-status" aria-label="Progression du parcours">
+        <span id="stepLabel" class="status-chip">Départ</span>
+        <span id="uncertaintyChip" class="status-chip neutral">0 « ne sais pas »</span>
+      </div>
+
+      <article class="question-card" aria-live="polite" aria-atomic="true">
+        <div id="questionIcon" class="question-icon" aria-hidden="true">◎</div>
+        <p id="questionKicker" class="question-kicker">Besoin d’identification</p>
+        <h2 id="journeyTitle">J’ai besoin de comprendre ce que je ressens.</h2>
+        <p id="questionText" class="question-text">Je m’arrête quelques secondes et j’observe le changement corporel le plus net.</p>
+
+        <details id="questionDetails" class="question-details">
+          <summary>Repères issus des fiches</summary>
+          <div id="detailsContent"></div>
+        </details>
+
+        <div id="answerButtons" class="answer-grid" role="group" aria-label="Réponse">
+          <button class="answer yes" type="button" data-answer="yes"><span>Oui</span><small>cela correspond</small></button>
+          <button class="answer no" type="button" data-answer="no"><span>Non</span><small>cela ne correspond pas</small></button>
+          <button class="answer unknown" type="button" data-answer="unknown"><span>Je ne sais pas</span><small>je marque l’incertitude</small></button>
+        </div>
+
+        <div id="candidatePanel" class="candidate-panel hidden"></div>
+        <div id="resultPanel" class="result-panel hidden"></div>
+      </article>
+
+      <div class="journey-actions">
+        <button id="backButton" class="secondary-button" type="button" disabled>Retour</button>
+        <button id="restartButton" class="secondary-button" type="button">Recommencer</button>
+      </div>
+
+      <p class="clinical-note">Cet outil aide à formuler une hypothèse. Il ne remplace ni une évaluation clinique ni un avis médical.</p>
+    </section>
+
+    <section id="historyView" class="view" aria-labelledby="historyTitle">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Données conservées uniquement sur cet appareil</p>
+          <h2 id="historyTitle">Historique personnel</h2>
+        </div>
+        <div class="toolbar">
+          <button id="exportCsvButton" class="secondary-button" type="button">Exporter CSV</button>
+          <button id="exportJsonButton" class="secondary-button" type="button">Exporter JSON</button>
+        </div>
+      </div>
+      <div id="historyEmpty" class="empty-state">Aucune observation enregistrée.</div>
+      <div id="historyList" class="history-list"></div>
+      <button id="clearHistoryButton" class="danger-button" type="button">Effacer l’historique local</button>
+    </section>
+
+    <section id="referencesView" class="view" aria-labelledby="referencesTitle">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Transparence du modèle</p>
+          <h2 id="referencesTitle">Repères et limites</h2>
+        </div>
+      </div>
+
+      <article class="info-block">
+        <h3>Principe de l’outil</h3>
+        <p>Le parcours part des sensations corporelles, formule une hypothèse, puis vérifie la fonction adaptative proposée. Une même sensation peut correspondre à plusieurs états et plusieurs émotions peuvent coexister.</p>
+      </article>
+
+      <article class="info-block">
+        <h3>Contenu repris des trois fiches initiales</h3>
+        <ul>
+          <li>Zones corporelles : tête/visage, gorge/poitrine, ventre, muscles/corps entier, sens/environnement.</li>
+          <li>Profils : joie, colère, peur, tristesse, dégoût, anxiété, honte, apaisement.</li>
+          <li>États à distinguer : surcharge sensorielle et fatigue/vide.</li>
+          <li>Fonctions adaptatives formulées dans la fiche de psychoéducation.</li>
+        </ul>
+      </article>
+
+      <article class="info-block">
+        <h3>Références scientifiques utilisées pour l’architecture</h3>
+        <ol class="references-list">
+          <li>Nummenmaa L. et al. (2014). <em>Bodily maps of emotions</em>. PNAS, 111(2), 646–651.</li>
+          <li>Kinnaird E. et al. (2019). <em>Investigating alexithymia in autism: A systematic review and meta-analysis</em>.</li>
+          <li>Garfinkel S. N. et al. (2016). <em>Discrepancies between dimensions of interoception in autism</em>.</li>
+          <li>Quadt L. et al. (2021). <em>Interoceptive training to target anxiety in autistic adults (ADIE)</em>.</li>
+          <li>Costache M. E. et al. (2024). <em>Exploring emotion control and alexithymia in autistic adults using ecological momentary assessment</em>.</li>
+        </ol>
+      </article>
+
+      <article class="warning-block">
+        <h3>Limites importantes</h3>
+        <p>Les signatures corporelles ne sont pas des biomarqueurs individuels. Le résultat est une hypothèse de travail. Un symptôme inhabituel, brutal ou médicalement inquiétant doit être évalué comme tel avant d’être interprété comme une émotion.</p>
+      </article>
+    </section>
+
+    <section id="settingsView" class="view" aria-labelledby="settingsTitle">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Confort de lecture</p>
+          <h2 id="settingsTitle">Réglages</h2>
+        </div>
+      </div>
+
+      <div class="settings-grid">
+        <label class="setting-row" for="largeTextToggle">
+          <span><strong>Texte agrandi</strong><small>Augmente la taille et l’espacement.</small></span>
+          <input id="largeTextToggle" type="checkbox">
+        </label>
+        <label class="setting-row" for="contrastToggle">
+          <span><strong>Contraste renforcé</strong><small>Accentue les contours et réduit les effets décoratifs.</small></span>
+          <input id="contrastToggle" type="checkbox">
+        </label>
+        <label class="setting-row" for="motionToggle">
+          <span><strong>Réduire les mouvements</strong><small>Désactive les transitions visuelles.</small></span>
+          <input id="motionToggle" type="checkbox">
+        </label>
+      </div>
+
+      <article class="info-block install-help">
+        <h3>Installer sur le téléphone</h3>
+        <p><strong>Android/Chrome :</strong> menu du navigateur → « Installer l’application » ou « Ajouter à l’écran d’accueil ».</p>
+        <p><strong>iPhone/Safari :</strong> bouton Partager → « Sur l’écran d’accueil ».</p>
+      </article>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js" defer></script>
+</body>
+</html>
