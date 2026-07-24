@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#285f76">
+<title>GPS émotionnel V5</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div><p>QUESTIONNAIRE D’AIDE À L’IDENTIFICATION</p><h1>GPS émotionnel V5</h1></div>
+  <button id="settings" class="square" aria-label="Réglages">Aa</button>
+</header>
+<main id="app"></main>
+<nav>
+  <button data-view="home" class="active">Accueil</button>
+  <button data-view="map">Carte</button>
+  <button data-view="history">Historique</button>
+  <button data-view="science">Méthode</button>
+</nav>
+<dialog id="settingsDialog">
+  <form method="dialog">
+    <div class="row"><h2>Affichage</h2><button value="cancel" class="square">×</button></div>
+    <label class="field">Taille du texte
+      <select id="font"><option value="normal">Normale</option><option value="large">Grande</option><option value="xlarge">Très grande</option></select>
+    </label>
+    <label class="check"><input id="contrast" type="checkbox"> Contraste renforcé</label>
+    <label class="check"><input id="motion" type="checkbox"> Réduire les animations</label>
+    <button id="saveSettings" class="primary">Enregistrer</button>
+  </form>
+</dialog>
+<script src="app.js"></script>
+</body></html>
