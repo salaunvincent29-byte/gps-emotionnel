@@ -1,0 +1,23 @@
+@startuml
+title Mon GPS émotionnel V4
+start
+:Accueil;
+fork
+:GPS émotionnel;
+:Observer -> hypothèses -> besoin -> action;
+fork again
+:Carte mentale interactive;
+fork again
+:Dictionnaire personnel;
+fork again
+:Journal et profil longitudinal;
+fork again
+:Régulation;
+fork again
+:Comprendre les autres;
+fork again
+:Progression;
+end fork
+:Apprentissage personnalisé;
+stop
+@enduml
