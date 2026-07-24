@@ -1,0 +1,12 @@
+{
+  "name": "GPS émotionnel V5.3",
+  "short_name": "GPS émotions",
+  "description": "Questionnaire, cartographie corporelle frontale et boussole émotionnelle circulaire sans chevauchement.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f7f8",
+  "theme_color": "#285f76",
+  "lang": "fr",
+  "icons": []
+}
