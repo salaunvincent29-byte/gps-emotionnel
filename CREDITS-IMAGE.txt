@@ -1,8 +1,0 @@
-Images utilisées dans la V5.3
-
-Les fichiers suivants sont dérivés de la représentation générée pour le projet :
-- assets/body-front-neutral.png
-- assets/compass-background.png
-- assets/concept-v5-3.png
-
-Ils servent exclusivement à la cartographie corporelle et à la boussole émotionnelle de l’application.
