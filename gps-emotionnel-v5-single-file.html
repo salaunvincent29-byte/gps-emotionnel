@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#285f76">
+<title>GPS émotionnel V5</title>
+<style>:root{--bg:#f3f7f8;--card:#fff;--ink:#17272f;--muted:#5f7179;--line:#d7e1e5;--accent:#285f76;--soft:#e2eef2;--yes:#23764b;--no:#59666d;--maybe:#986514;--font:17px}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink)}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:var(--font);padding-bottom:74px}button,input,select,textarea{font:inherit}button{cursor:pointer}.top{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:calc(12px + env(safe-area-inset-top)) 16px 11px;background:rgba(243,247,248,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.top p{margin:0;color:var(--accent);font-size:.7rem;font-weight:900;letter-spacing:.08em}.top h1{font-size:1.25rem;margin:.15rem 0 0}main{max-width:720px;margin:auto;padding:15px}.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 7px 22px rgba(20,40,50,.07)}h2{font-size:1.45rem;line-height:1.25;margin:.2rem 0 .8rem}h3{font-size:1.05rem;margin:.2rem 0 .5rem}p{line-height:1.48}.eyebrow{font-size:.77rem;font-weight:900;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin:0 0 .5rem}.muted{color:var(--muted)}.notice{padding:13px 14px;border-radius:15px;background:#faf4e8;border:1px solid #e6d1a9;margin:14px 0}.danger{background:#f9ecea;border-color:#e6c2be}.safe{background:#edf7f1;border-color:#c3dfce}.grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.choice,.module{border:1px solid var(--line);border-radius:17px;background:#fbfcfc;padding:15px;text-align:left;min-height:108px}.choice strong,.module strong{display:block;margin-bottom:5px}.choice small,.module small{color:var(--muted);line-height:1.35}.primary,.secondary,.answer{width:100%;min-height:52px;border-radius:15px;padding:12px 15px;font-weight:800;margin-top:10px}.primary{background:var(--accent);border:1px solid var(--accent);color:#fff}.secondary{background:var(--card);border:1px solid var(--line);color:var(--ink)}.square{width:44px;height:44px;border-radius:13px;border:1px solid var(--line);background:var(--card);font-weight:900}.row{display:flex;justify-content:space-between;align-items:center;gap:12px}.progress-label{display:flex;justify-content:space-between;font-size:.82rem;color:var(--muted);margin-bottom:7px}.progress{height:10px;border-radius:999px;background:#dfe7ea;overflow:hidden;margin-bottom:14px}.progress div{height:100%;background:var(--accent);border-radius:999px}.qcard{min-height:440px;display:flex;flex-direction:column}.zone{display:inline-flex;align-self:flex-start;padding:7px 10px;border-radius:999px;background:var(--soft);color:var(--accent);font-size:.82rem;font-weight:850}.question{font-size:1.65rem;margin:20px 0 8px}.help{color:var(--muted);margin:0}.answers{display:grid;gap:10px;margin-top:auto;padding-top:22px}.answer{margin:0;text-align:left;border:1px solid var(--line)}.yes{background:#edf7f1;border-color:#bedfca;color:#164d31}.no{background:#f1f4f5;color:#39464d}.unsure{background:#fbf2e4;border-color:#e5cca4;color:#6d4708}.confirmation{padding:10px;border-radius:12px;background:var(--soft);color:var(--accent);font-weight:850;text-align:center;margin-top:12px}.tier{margin-top:10px;font-size:.75rem;color:var(--muted)}.mix{display:grid;gap:13px;margin:20px 0}.mixrow{display:grid;grid-template-columns:112px 1fr 45px;gap:9px;align-items:center}.bar{height:14px;border-radius:999px;background:#e1e8eb;overflow:hidden}.bar div{height:100%;background:var(--accent);border-radius:999px}.pct{text-align:right;font-weight:900}.evidence{padding:12px;border:1px solid var(--line);border-radius:14px;margin-top:9px;background:#fbfcfc}.evidence p{margin:.3rem 0}.tag{display:inline-block;padding:6px 8px;border-radius:999px;background:var(--soft);color:var(--accent);font-size:.78rem;font-weight:800;margin:3px}.field{display:grid;gap:7px;margin:15px 0;font-weight:800}.field input,.field textarea,.field select{width:100%;padding:12px;border:1px solid var(--line);border-radius:13px;background:var(--card);color:var(--ink)}.field textarea{min-height:90px}.map{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.map button{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:14px;text-align:left}.map .icon{font-size:1.5rem;display:block}.history-item{padding:14px 0;border-top:1px solid var(--line)}.history-item:first-child{border-top:0}nav{position:fixed;bottom:0;left:0;right:0;z-index:12;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,.97);border-top:1px solid var(--line);padding:7px 5px calc(7px + env(safe-area-inset-bottom))}nav button{border:0;background:transparent;color:var(--muted);font-size:.73rem;font-weight:800;padding:6px}nav button.active{color:var(--accent)}dialog{width:min(92vw,500px);border:0;border-radius:20px;padding:18px;background:var(--card);color:var(--ink)}dialog::backdrop{background:rgba(0,0,0,.35)}.check{display:block;padding:13px 0;border-top:1px solid var(--line)}.font-large{--font:19px}.font-xlarge{--font:22px}.high-contrast{--bg:#fff;--card:#fff;--ink:#000;--muted:#222;--line:#000;--accent:#003f59;--soft:#d7edf6}.reduce-motion *{transition:none!important;animation:none!important}@media(max-width:480px){main{padding:12px}.card{padding:17px}.grid,.map{grid-template-columns:1fr}.question{font-size:1.45rem}.mixrow{grid-template-columns:100px 1fr 42px}}</style>
+</head>
+<body>
+<header class="top">
+  <div><p>QUESTIONNAIRE D’AIDE À L’IDENTIFICATION</p><h1>GPS émotionnel V5</h1></div>
+  <button id="settings" class="square" aria-label="Réglages">Aa</button>
+</header>
+<main id="app"></main>
+<nav>
+  <button data-view="home" class="active">Accueil</button>
+  <button data-view="map">Carte</button>
+  <button data-view="history">Historique</button>
+  <button data-view="science">Méthode</button>
+</nav>
+<dialog id="settingsDialog">
+  <form method="dialog">
+    <div class="row"><h2>Affichage</h2><button value="cancel" class="square">×</button></div>
+    <label class="field">Taille du texte
+      <select id="font"><option value="normal">Normale</option><option value="large">Grande</option><option value="xlarge">Très grande</option></select>
+    </label>
+    <label class="check"><input id="contrast" type="checkbox"> Contraste renforcé</label>
+    <label class="check"><input id="motion" type="checkbox"> Réduire les animations</label>
+    <button id="saveSettings" class="primary">Enregistrer</button>
+  </form>
+</dialog>
+<script>'use strict';
+const STATES={"joy": {"name": "Joie", "kind": "Émotion probable", "icon": "☀", "function": "Signale une situation favorable et peut favoriser l’approche, l’exploration ou le partage.", "needs": ["continuer", "profiter", "partager"]}, "anger": {"name": "Colère", "kind": "Émotion probable", "icon": "⚡", "function": "Mobilise l’énergie face à un obstacle, une injustice ou une limite dépassée.", "needs": ["limite", "espace", "justice", "action claire"]}, "fear": {"name": "Peur", "kind": "Émotion probable", "icon": "△", "function": "Prépare à se protéger rapidement face à un danger présent.", "needs": ["sécurité", "distance", "aide immédiate"]}, "anxiety": {"name": "Anxiété", "kind": "Émotion probable", "icon": "≈", "function": "Maintient la vigilance face à une menace possible ou anticipée.", "needs": ["prévisibilité", "information", "plan", "réassurance"]}, "disgust": {"name": "Dégoût", "kind": "Émotion probable", "icon": "⊘", "function": "Protège d’un contact, d’une odeur, d’un goût ou d’une situation perçue comme nocive.", "needs": ["éloignement", "arrêt", "protection"]}, "sadness": {"name": "Tristesse", "kind": "Émotion probable", "icon": "☂", "function": "Favorise le ralentissement, la récupération et la recherche de soutien.", "needs": ["repos", "soutien", "temps", "réconfort"]}, "shame": {"name": "Honte", "kind": "Émotion probable", "icon": "○", "function": "Peut apparaître lors d’une exposition sociale difficile et favoriser le retrait ou la réparation.", "needs": ["respect", "sécurité relationnelle", "réparation"]}, "calm": {"name": "Apaisement", "kind": "État de régulation probable", "icon": "≈", "function": "Correspond à une baisse de l’activation et à une restauration des ressources.", "needs": ["maintenir le calme", "repos", "sécurité"]}, "sensory": {"name": "Surcharge sensorielle", "kind": "État non émotionnel possible", "icon": "✦", "function": "Indique surtout que les stimulations dépassent les capacités disponibles du moment.", "needs": ["silence", "obscurité", "distance", "réduction des stimulations"]}, "fatigue": {"name": "Fatigue / vide", "kind": "État non émotionnel possible", "icon": "◐", "function": "Décrit principalement un manque de ressources, un ralentissement ou un épuisement.", "needs": ["pause", "repos", "sommeil", "réduction de la demande"]}};
+const ALL_QUESTIONS=[{"id": "medical", "stage": "Sécurité", "q": "Ai-je maintenant un malaise, une forte douleur dans la poitrine ou beaucoup de mal à respirer ?", "help": "Si oui, le questionnaire s’arrête. Ces signes doivent être évalués médicalement.", "safety": true, "mode": "short"}, {"id": "sound", "stage": "Sens", "q": "Les sons me gênent-ils plus que d’habitude ?", "tier": "core", "mode": "short", "w": {"sensory": 5}}, {"id": "light", "stage": "Sens", "q": "La lumière me gêne-t-elle maintenant ?", "tier": "core", "mode": "short", "w": {"sensory": 5}}, {"id": "touch", "stage": "Sens", "q": "Un vêtement, un contact ou une texture est-il difficile à supporter ?", "tier": "core", "mode": "full", "w": {"sensory": 5, "disgust": 1}}, {"id": "silence", "stage": "Sens", "q": "Ai-je besoin de silence maintenant ?", "tier": "core", "mode": "short", "w": {"sensory": 6}}, {"id": "dark", "stage": "Sens", "q": "Ai-je besoin de moins de lumière maintenant ?", "tier": "core", "mode": "full", "w": {"sensory": 5}}, {"id": "sudden_fatigue", "stage": "Énergie", "q": "Suis-je soudain très fatigué ?", "tier": "core", "mode": "short", "w": {"fatigue": 6, "sadness": 1}}, {"id": "heavy_body", "stage": "Corps entier", "q": "Mon corps me paraît-il lourd ?", "tier": "core", "mode": "short", "w": {"fatigue": 5, "sadness": 4}}, {"id": "low_limbs", "stage": "Bras et jambes", "q": "Mes bras ou mes jambes manquent-ils d’énergie ?", "tier": "core", "mode": "full", "w": {"fatigue": 4, "sadness": 4}}, {"id": "still_body", "stage": "Corps entier", "q": "Ai-je du mal à mettre mon corps en mouvement ?", "tier": "core", "mode": "full", "w": {"fatigue": 4, "sadness": 2}}, {"id": "empty", "stage": "Corps entier", "q": "Est-ce que je ressens une sensation de vide ?", "tier": "core", "mode": "short", "w": {"fatigue": 6, "sadness": 2}}, {"id": "easy_breath", "stage": "Respiration", "q": "Est-ce que je respire facilement ?", "tier": "core", "mode": "short", "w": {"calm": 5, "joy": 2}}, {"id": "wide_breath", "stage": "Respiration", "q": "Ma respiration est-elle ample et régulière ?", "tier": "core", "mode": "full", "w": {"calm": 5, "joy": 2}}, {"id": "soft_warmth", "stage": "Corps entier", "q": "Est-ce que je sens une chaleur douce dans mon corps ?", "tier": "core", "mode": "short", "w": {"calm": 6, "joy": 2}}, {"id": "relaxed_muscles", "stage": "Muscles", "q": "Mes muscles sont-ils relâchés ?", "tier": "research", "mode": "full", "w": {"calm": 3}}, {"id": "pleasant_energy", "stage": "Bras et jambes", "q": "Ai-je une énergie agréable dans les bras ou les jambes ?", "tier": "core", "mode": "short", "w": {"joy": 6}}, {"id": "upper_warmth", "stage": "Poitrine et tête", "q": "Est-ce que je sens une chaleur agréable dans la poitrine ou la tête ?", "tier": "core", "mode": "full", "w": {"joy": 5, "calm": 2}}, {"id": "spont_smile", "stage": "Visage", "q": "Est-ce que les coins de ma bouche remontent sans que je le décide ?", "tier": "research", "mode": "full", "w": {"joy": 2}}, {"id": "jaw", "stage": "Visage", "q": "Ma mâchoire est-elle serrée ?", "tier": "core", "mode": "short", "w": {"anger": 6}}, {"id": "fists", "stage": "Mains", "q": "Mes mains sont-elles fermées ou très serrées ?", "tier": "core", "mode": "full", "w": {"anger": 6}}, {"id": "arm_tension", "stage": "Bras", "q": "Mes bras sont-ils tendus ?", "tier": "core", "mode": "full", "w": {"anger": 5}}, {"id": "head_tension", "stage": "Tête", "q": "Est-ce que je sens une forte tension dans la tête ?", "tier": "core", "mode": "full", "w": {"anger": 4}}, {"id": "body_heat", "stage": "Corps entier", "q": "Est-ce que j’ai chaud alors que la pièce n’est pas plus chaude ?", "tier": "core", "mode": "short", "w": {"anger": 4, "shame": 1}}, {"id": "heart_fast_activation", "stage": "Poitrine", "q": "Mon cœur bat-il plus vite que d’habitude ?", "tier": "research", "mode": "short", "w": {"anger": 2, "fear": 3, "anxiety": 3, "shame": 1}}, {"id": "fast_breath", "stage": "Respiration", "q": "Est-ce que je respire plus vite que d’habitude ?", "tier": "research", "mode": "full", "w": {"anger": 2, "fear": 3, "anxiety": 3}}, {"id": "tight_chest", "stage": "Poitrine", "q": "Ma poitrine est-elle serrée ?", "tier": "core", "mode": "short", "w": {"fear": 5, "anxiety": 4}}, {"id": "short_breath", "stage": "Respiration", "q": "Mon souffle est-il court ?", "tier": "core", "mode": "short", "w": {"fear": 6, "anxiety": 4}}, {"id": "weak_legs", "stage": "Jambes", "q": "Mes jambes semblent-elles faibles ou prêtes à lâcher ?", "tier": "core", "mode": "short", "w": {"fear": 7}}, {"id": "tremble", "stage": "Corps ou mains", "q": "Est-ce que mes mains ou mon corps tremblent ?", "tier": "research", "mode": "full", "w": {"fear": 4, "anxiety": 3}}, {"id": "cold_sweat", "stage": "Peau", "q": "Est-ce que je transpire ou que j’ai des frissons sans raison évidente ?", "tier": "research", "mode": "full", "w": {"fear": 3, "anxiety": 3}}, {"id": "belly_knot", "stage": "Ventre", "q": "Est-ce que je sens un nœud dans le ventre ?", "tier": "core", "mode": "short", "w": {"anxiety": 6}}, {"id": "chest_pressure", "stage": "Poitrine", "q": "Est-ce que je sens une pression dans la poitrine ?", "tier": "core", "mode": "full", "w": {"anxiety": 5, "fear": 3}}, {"id": "dry_mouth", "stage": "Bouche", "q": "Ma bouche est-elle plus sèche que d’habitude ?", "tier": "research", "mode": "full", "w": {"anxiety": 2, "fear": 1}}, {"id": "nausea", "stage": "Ventre", "q": "Ai-je la nausée ou l’estomac retourné ?", "tier": "research", "mode": "full", "w": {"disgust": 4, "anxiety": 3, "fear": 1}}, {"id": "general_tension", "stage": "Muscles", "q": "Plusieurs muscles de mon corps sont-ils tendus en même temps ?", "tier": "research", "mode": "full", "w": {"anxiety": 3, "anger": 2}}, {"id": "throat_reaction", "stage": "Gorge", "q": "Est-ce que ma gorge se serre ou réagit fortement ?", "tier": "core", "mode": "full", "w": {"disgust": 5, "fear": 1}}, {"id": "stomach_reaction", "stage": "Estomac", "q": "Est-ce que mon estomac réagit fortement ?", "tier": "core", "mode": "short", "w": {"disgust": 6, "anxiety": 2}}, {"id": "recoil", "stage": "Mouvement", "q": "Est-ce que mon corps recule tout seul ?", "tier": "core", "mode": "full", "w": {"disgust": 6, "shame": 1}}, {"id": "bad_taste_saliva", "stage": "Bouche", "q": "Ai-je un goût désagréable ou plus de salive dans la bouche ?", "tier": "research", "mode": "full", "w": {"disgust": 3}}, {"id": "throat_knot", "stage": "Gorge", "q": "Ma gorge est-elle nouée ?", "tier": "core", "mode": "short", "w": {"sadness": 6, "fear": 1}}, {"id": "eyes_wet", "stage": "Yeux", "q": "Mes yeux sont-ils humides ou ai-je envie de pleurer ?", "tier": "research", "mode": "full", "w": {"sadness": 4}}, {"id": "slow_movement", "stage": "Mouvement", "q": "Est-ce que mes mouvements sont plus lents que d’habitude ?", "tier": "research", "mode": "full", "w": {"sadness": 3, "fatigue": 3}}, {"id": "chest_ache", "stage": "Poitrine", "q": "Est-ce que je sens une douleur diffuse ou un poids dans la poitrine ?", "tier": "research", "mode": "full", "w": {"sadness": 3, "anxiety": 2}}, {"id": "face_hot", "stage": "Visage", "q": "Mon visage est-il chaud ?", "tier": "core", "mode": "short", "w": {"shame": 6, "anger": 1}}, {"id": "face_red", "stage": "Visage", "q": "Mon visage est-il plus rouge que d’habitude ?", "tier": "core", "mode": "full", "w": {"shame": 5, "anger": 1}}, {"id": "body_shrink", "stage": "Corps entier", "q": "Est-ce que mon corps se replie ou prend moins de place ?", "tier": "core", "mode": "full", "w": {"shame": 6, "sadness": 1}}, {"id": "stomach_shame", "stage": "Ventre", "q": "Est-ce que mon ventre devient inconfortable quand je pense au regard des autres ?", "tier": "research", "mode": "full", "w": {"shame": 3, "anxiety": 2}}, {"id": "danger_now", "stage": "Situation", "q": "Un danger est-il présent ici, maintenant ?", "tier": "context", "mode": "short", "w": {"fear": 8}}, {"id": "future_threat", "stage": "Situation", "q": "Est-ce que je pense à un problème qui pourrait arriver plus tard ?", "tier": "context", "mode": "short", "w": {"anxiety": 8}}, {"id": "obstacle_limit", "stage": "Situation", "q": "Quelqu’un ou quelque chose bloque-t-il ce que je veux faire, ou dépasse-t-il une limite ?", "tier": "context", "mode": "short", "w": {"anger": 8}}, {"id": "loss", "stage": "Situation", "q": "Est-ce que je viens de perdre quelque chose d’important, ou d’être déçu ?", "tier": "context", "mode": "full", "w": {"sadness": 8}}, {"id": "social_exposure", "stage": "Situation", "q": "Est-ce que je pense avoir fait une erreur devant quelqu’un ?", "tier": "context", "mode": "short", "w": {"shame": 8}}, {"id": "noxious", "stage": "Situation", "q": "Est-ce que quelque chose me paraît sale, mauvais, contaminé ou impossible à avaler ?", "tier": "context", "mode": "full", "w": {"disgust": 8}}, {"id": "favorable", "stage": "Situation", "q": "Est-ce que quelque chose d’agréable ou d’attendu vient de se produire ?", "tier": "context", "mode": "full", "w": {"joy": 8}}];
+const SHORT_IDS=new Set(["belly_knot", "body_heat", "danger_now", "easy_breath", "empty", "face_hot", "future_threat", "heart_fast_activation", "heavy_body", "jaw", "light", "medical", "obstacle_limit", "pleasant_energy", "short_breath", "silence", "social_exposure", "soft_warmth", "sound", "stomach_reaction", "sudden_fatigue", "throat_knot", "tight_chest", "weak_legs"]);
+const HISTORY_KEY='gps-emotionnel-v5-history',SETTINGS_KEY='gps-emotionnel-v5-settings';
+const app=document.getElementById('app');
+const S={view:'home',mode:'short',questions:[],i:0,answers:{},unknown:0,result:null,stopped:false,mapKey:null};
+const esc=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+const history=()=>{try{return JSON.parse(localStorage.getItem(HISTORY_KEY)||'[]')}catch{return[]}};
+function setView(v){S.view=v;document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===v));render()}
+function render(){({home,question,result,map,history:historyView,science,mapDetail}[S.view]||home)()}
+function home(){
+ app.innerHTML=`<section class="card"><p class="eyebrow">VERSION 5 — QUESTIONNAIRE</p><h2>Je décris mon corps. Le GPS propose des hypothèses.</h2>
+ <p>Les signes issus des fiches de la neuropsychologue restent prioritaires. Les signes ajoutés par la recherche ont une pondération plus faible.</p>
+ <div class="grid">
+  <button class="choice" data-mode="short"><strong>Parcours court</strong><small>Environ 3 à 5 minutes. Signes principaux et questions de contexte.</small></button>
+  <button class="choice" data-mode="full"><strong>Parcours complet</strong><small>Environ 7 à 10 minutes. Ajoute des signes corporels complémentaires.</small></button>
+ </div>
+ <div class="notice"><strong>Réponses :</strong> Oui, Non ou Difficile à dire. « Difficile à dire » n’est jamais traité comme « Non ».</div>
+ <button class="secondary" onclick="setView('map')">Voir les émotions recherchées</button></section>`;
+ document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>start(b.dataset.mode));
+}
+function start(mode){
+ S.mode=mode;S.questions=ALL_QUESTIONS.filter(q=>q.safety || mode==='full' || SHORT_IDS.has(q.id));
+ S.i=0;S.answers={};S.unknown=0;S.result=null;S.stopped=false;S.view='question';render();
+}
+function question(){
+ const q=S.questions[S.i],p=Math.round(100*S.i/S.questions.length);
+ app.innerHTML=`<div class="progress-label"><span>Question ${S.i+1} sur ${S.questions.length}</span><span>${p} %</span></div>
+ <div class="progress"><div style="width:${p}%"></div></div>
+ <section class="card qcard"><span class="zone">${esc(q.stage)}</span><h2 class="question">${esc(q.q)}</h2>
+ <p class="help">${esc(q.help||'Répondez seulement pour ce qui est présent maintenant.')}</p>
+ <div class="answers"><button class="answer yes" data-a="yes">Oui</button><button class="answer no" data-a="no">Non</button><button class="answer unsure" data-a="unsure">Difficile à dire</button></div>
+ <div id="confirmation"></div>
+ ${q.tier?`<div class="tier">${q.tier==='core'?'Repère prioritaire des fiches initiales':q.tier==='research'?'Repère complémentaire de la littérature':'Question de contexte'}</div>`:''}</section>`;
+ document.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>answer(b.dataset.a));
+}
+function answer(a){
+ const q=S.questions[S.i];S.answers[q.id]=a;if(a==='unsure')S.unknown++;
+ if(q.safety && a==='yes'){S.stopped=true;return safetyStop()}
+ document.querySelectorAll('[data-a]').forEach(b=>b.disabled=true);
+ document.getElementById('confirmation').innerHTML='<div class="confirmation">✓ Réponse notée</div>';
+ setTimeout(()=>{S.i++;if(S.i>=S.questions.length){S.result=calculate();S.view='result'}render()},260);
+}
+function safetyStop(){
+ app.innerHTML=`<section class="card"><p class="eyebrow">PRIORITÉ À LA SÉCURITÉ</p><h2>J’arrête le questionnaire.</h2>
+ <div class="notice danger">Un malaise, une forte douleur thoracique ou une difficulté respiratoire importante ne doivent pas être classés automatiquement comme une émotion.</div>
+ <p>Demandez une aide médicale adaptée à la situation. En cas d’urgence en France, appelez le 15 ou le 112.</p>
+ <button class="secondary" onclick="setView('home')">Retour à l’accueil</button></section>`;
+}
+function calculate(){
+ const support={},possible={},yesCues={};
+ Object.keys(STATES).forEach(k=>{support[k]=0;possible[k]=0;yesCues[k]=[]});
+ S.questions.forEach(q=>{
+   if(!q.w)return;const a=S.answers[q.id];
+   Object.entries(q.w).forEach(([k,w])=>{
+     if(a!=='unsure')possible[k]+=w;
+     if(a==='yes'){support[k]+=w;yesCues[k].push(q.q)}
+   });
+ });
+ let ratios=Object.keys(STATES).map(k=>({key:k,ratio:possible[k]?support[k]/possible[k]:0,raw:support[k],cues:yesCues[k]})).sort((a,b)=>b.ratio-a.ratio);
+ const sum=ratios.reduce((s,x)=>s+x.ratio,0);
+ let exact=ratios.map(x=>({...x,pct:sum?100*x.ratio/sum:0}));
+ let flo=exact.map(x=>({...x,pct:Math.floor(x.pct)})),rem=100-flo.reduce((s,x)=>s+x.pct,0);
+ exact.map((x,i)=>({i,f:x.pct-Math.floor(x.pct)})).sort((a,b)=>b.f-a.f).slice(0,rem).forEach(x=>flo[x.i].pct++);
+ const answered=S.questions.length-S.unknown,conf=answered?Math.round(100*answered/S.questions.length):0;
+ return{mix:flo,confidence:conf};
+}
+function result(){
+ const v=S.result.mix.filter(x=>x.pct>0).slice(0,6),m=v[0];
+ app.innerHTML=`<section class="card"><p class="eyebrow">PANORAMA DU MOMENT</p><h2>${m?esc(STATES[m.key].name):'État non déterminé'}</h2>
+ <p>Questions avec réponse claire : <strong>${S.result.confidence} %</strong></p>
+ <div class="mix">${v.map(x=>`<div class="mixrow"><strong>${esc(STATES[x.key].name)}</strong><div class="bar"><div style="width:${x.pct}%"></div></div><span class="pct">${x.pct}%</span></div>`).join('')}</div>
+ <div class="notice">Les pourcentages sont des compatibilités relatives entre vos réponses et les hypothèses. Ils ne mesurent pas la quantité biologique d’une émotion.</div>
+ ${m?`<div class="evidence"><h3>${STATES[m.key].icon} ${esc(STATES[m.key].name)}</h3><p>${esc(STATES[m.key].function)}</p><div>${STATES[m.key].needs.map(n=>`<span class="tag">${esc(n)}</span>`).join('')}</div>
+ <h3>Indices que vous avez confirmés</h3>${m.cues.length?m.cues.slice(0,6).map(c=>`<p>✓ ${esc(c)}</p>`).join(''):'<p>Aucun indice net.</p>'}</div>`:''}
+ <label class="field">Intensité globale<input id="intensity" type="range" min="0" max="10" value="5"></label>
+ <label class="field">Situation<input id="context" type="text" placeholder="Ex. après une réunion"></label>
+ <label class="field">Note ou besoin<textarea id="note" placeholder="Facultatif"></textarea></label>
+ <button id="save" class="primary">Enregistrer</button><button class="secondary" onclick="start('${S.mode}')">Recommencer</button></section>`;
+ document.getElementById('save').onclick=save;
+}
+function save(){
+ const h=history();h.unshift({date:new Date().toISOString(),mode:S.mode,intensity:+document.getElementById('intensity').value,context:document.getElementById('context').value.trim(),note:document.getElementById('note').value.trim(),unknown:S.unknown,mix:S.result.mix.map(x=>({key:x.key,pct:x.pct})),answers:S.answers});
+ localStorage.setItem(HISTORY_KEY,JSON.stringify(h.slice(0,250)));alert('Panorama enregistré sur cet appareil.');setView('history');
+}
+function map(){
+ app.innerHTML=`<section class="card"><p class="eyebrow">HYPOTHÈSES DU QUESTIONNAIRE</p><h2>Émotions et états distingués</h2><div class="map">${Object.entries(STATES).map(([k,s])=>`<button data-k="${k}"><span class="icon">${s.icon}</span><strong>${esc(s.name)}</strong><small>${esc(s.kind)}</small></button>`).join('')}</div></section>`;
+ document.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{S.mapKey=b.dataset.k;setView('mapDetail')});
+}
+function mapDetail(){
+ const s=STATES[S.mapKey];
+ const qs=ALL_QUESTIONS.filter(q=>q.w&&q.w[S.mapKey]).sort((a,b)=>(b.w[S.mapKey]-a.w[S.mapKey]));
+ app.innerHTML=`<section class="card"><button class="secondary" onclick="setView('map')">← Retour</button><p class="eyebrow">${esc(s.kind)}</p><h2>${s.icon} ${esc(s.name)}</h2><p>${esc(s.function)}</p>
+ <h3>Questions les plus liées à cette hypothèse</h3>${qs.slice(0,8).map(q=>`<div class="evidence"><strong>${esc(q.q)}</strong><p class="muted">${q.tier==='core'?'Fiche initiale':q.tier==='research'?'Complément de recherche':'Contexte'}</p></div>`).join('')}</section>`;
+}
+function historyView(){
+ const h=history();app.innerHTML=`<section class="card"><p class="eyebrow">HISTORIQUE LOCAL</p><h2>Panoramas enregistrés</h2>${h.length?h.map(x=>`<article class="history-item"><div class="row"><strong>${new Date(x.date).toLocaleString('fr-FR')}</strong><span>${x.intensity}/10</span></div><p>${x.mix.filter(y=>y.pct>0).slice(0,4).map(y=>`${STATES[y.key]?.name} ${y.pct}%`).join(' · ')}</p>${x.context?`<small>${esc(x.context)}</small>`:''}</article>`).join(''):'<p>Aucun panorama enregistré.</p>'}</section>`;
+}
+function science(){
+ app.innerHTML=`<section class="card"><p class="eyebrow">MÉTHODE ET LIMITES</p><h2>Ce que fait réellement la V5</h2>
+ <div class="evidence"><h3>1. Priorité aux documents initiaux</h3><p>Les manifestations explicitement présentes dans les fiches de la neuropsychologue reçoivent les poids les plus élevés.</p></div>
+ <div class="evidence"><h3>2. Compléments prudents</h3><p>Fréquence cardiaque, tremblements, transpiration, bouche sèche, nausée, larmes et ralentissement sont ajoutés comme indices complémentaires. Ils sont moins pondérés car ils se chevauchent fortement entre émotions.</p></div>
+ <div class="evidence"><h3>3. Absence de signal ≠ absence d’émotion</h3><p>Une réponse « Non » ne retire pas de points. Une réponse « Difficile à dire » est traitée comme une donnée manquante et réduit la confiance.</p></div>
+ <div class="evidence"><h3>4. Personnalisation nécessaire</h3><p>Les cartes corporelles sont des tendances de groupe. L’historique doit progressivement aider à reconnaître le profil propre de l’utilisateur.</p></div>
+ <div class="notice">La V5 est un outil d’auto-observation. Elle n’est ni un test diagnostique, ni un dispositif médical validé.</div></section>`;
+}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>setView(b.dataset.view));
+const dlg=document.getElementById('settingsDialog');
+document.getElementById('settings').onclick=()=>{loadSettings();dlg.showModal()};
+document.getElementById('saveSettings').onclick=()=>{const o={font:font.value,contrast:contrast.checked,motion:motion.checked};localStorage.setItem(SETTINGS_KEY,JSON.stringify(o));apply(o);dlg.close()};
+function loadSettings(){let o={};try{o=JSON.parse(localStorage.getItem(SETTINGS_KEY)||'{}')}catch{};font.value=o.font||'normal';contrast.checked=!!o.contrast;motion.checked=!!o.motion;apply(o)}
+function apply(o){document.body.classList.toggle('font-large',o.font==='large');document.body.classList.toggle('font-xlarge',o.font==='xlarge');document.body.classList.toggle('high-contrast',!!o.contrast);document.body.classList.toggle('reduce-motion',!!o.motion)}
+
+loadSettings();render();
+</script>
+</body></html>
