@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#285f76">
+<title>GPS émotionnel V5.2</title>
+<style>:root{--bg:#f3f7f8;--card:#fff;--ink:#17272f;--muted:#5f7179;--line:#d7e1e5;--accent:#285f76;--soft:#e2eef2;--yes:#23764b;--no:#59666d;--maybe:#986514;--font:17px}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink)}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:var(--font);padding-bottom:74px}button,input,select,textarea{font:inherit}button{cursor:pointer}.top{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:calc(12px + env(safe-area-inset-top)) 16px 11px;background:rgba(243,247,248,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.top p{margin:0;color:var(--accent);font-size:.7rem;font-weight:900;letter-spacing:.08em}.top h1{font-size:1.25rem;margin:.15rem 0 0}main{max-width:720px;margin:auto;padding:15px}.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 7px 22px rgba(20,40,50,.07)}h2{font-size:1.45rem;line-height:1.25;margin:.2rem 0 .8rem}h3{font-size:1.05rem;margin:.2rem 0 .5rem}p{line-height:1.48}.eyebrow{font-size:.77rem;font-weight:900;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin:0 0 .5rem}.muted{color:var(--muted)}.notice{padding:13px 14px;border-radius:15px;background:#faf4e8;border:1px solid #e6d1a9;margin:14px 0}.danger{background:#f9ecea;border-color:#e6c2be}.safe{background:#edf7f1;border-color:#c3dfce}.grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.choice,.module{border:1px solid var(--line);border-radius:17px;background:#fbfcfc;padding:15px;text-align:left;min-height:108px}.choice strong,.module strong{display:block;margin-bottom:5px}.choice small,.module small{color:var(--muted);line-height:1.35}.primary,.secondary,.answer{width:100%;min-height:52px;border-radius:15px;padding:12px 15px;font-weight:800;margin-top:10px}.primary{background:var(--accent);border:1px solid var(--accent);color:#fff}.secondary{background:var(--card);border:1px solid var(--line);color:var(--ink)}.square{width:44px;height:44px;border-radius:13px;border:1px solid var(--line);background:var(--card);font-weight:900}.row{display:flex;justify-content:space-between;align-items:center;gap:12px}.progress-label{display:flex;justify-content:space-between;font-size:.82rem;color:var(--muted);margin-bottom:7px}.progress{height:10px;border-radius:999px;background:#dfe7ea;overflow:hidden;margin-bottom:14px}.progress div{height:100%;background:var(--accent);border-radius:999px}.qcard{min-height:440px;display:flex;flex-direction:column}.zone{display:inline-flex;align-self:flex-start;padding:7px 10px;border-radius:999px;background:var(--soft);color:var(--accent);font-size:.82rem;font-weight:850}.question{font-size:1.65rem;margin:20px 0 8px}.help{color:var(--muted);margin:0}.answers{display:grid;gap:10px;margin-top:auto;padding-top:22px}.answer{margin:0;text-align:left;border:1px solid var(--line)}.yes{background:#edf7f1;border-color:#bedfca;color:#164d31}.no{background:#f1f4f5;color:#39464d}.unsure{background:#fbf2e4;border-color:#e5cca4;color:#6d4708}.confirmation{padding:10px;border-radius:12px;background:var(--soft);color:var(--accent);font-weight:850;text-align:center;margin-top:12px}.tier{margin-top:10px;font-size:.75rem;color:var(--muted)}.mix{display:grid;gap:13px;margin:20px 0}.mixrow{display:grid;grid-template-columns:112px 1fr 45px;gap:9px;align-items:center}.bar{height:14px;border-radius:999px;background:#e1e8eb;overflow:hidden}.bar div{height:100%;background:var(--accent);border-radius:999px}.pct{text-align:right;font-weight:900}.evidence{padding:12px;border:1px solid var(--line);border-radius:14px;margin-top:9px;background:#fbfcfc}.evidence p{margin:.3rem 0}.tag{display:inline-block;padding:6px 8px;border-radius:999px;background:var(--soft);color:var(--accent);font-size:.78rem;font-weight:800;margin:3px}.field{display:grid;gap:7px;margin:15px 0;font-weight:800}.field input,.field textarea,.field select{width:100%;padding:12px;border:1px solid var(--line);border-radius:13px;background:var(--card);color:var(--ink)}.field textarea{min-height:90px}.map{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.map button{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:14px;text-align:left}.map .icon{font-size:1.5rem;display:block}.history-item{padding:14px 0;border-top:1px solid var(--line)}.history-item:first-child{border-top:0}nav{position:fixed;bottom:0;left:0;right:0;z-index:12;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,.97);border-top:1px solid var(--line);padding:7px 5px calc(7px + env(safe-area-inset-bottom))}nav button{border:0;background:transparent;color:var(--muted);font-size:.73rem;font-weight:800;padding:6px}nav button.active{color:var(--accent)}dialog{width:min(92vw,500px);border:0;border-radius:20px;padding:18px;background:var(--card);color:var(--ink)}dialog::backdrop{background:rgba(0,0,0,.35)}.check{display:block;padding:13px 0;border-top:1px solid var(--line)}.font-large{--font:19px}.font-xlarge{--font:22px}.high-contrast{--bg:#fff;--card:#fff;--ink:#000;--muted:#222;--line:#000;--accent:#003f59;--soft:#d7edf6}.reduce-motion *{transition:none!important;animation:none!important}@media(max-width:480px){main{padding:12px}.card{padding:17px}.grid,.map{grid-template-columns:1fr}.question{font-size:1.45rem}.mixrow{grid-template-columns:100px 1fr 42px}}.hidden{display:none!important}.map-instruction,.map-caption{text-align:center;color:var(--muted)}.map-mode-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}.map-tab{border:1px solid var(--line);border-radius:999px;background:var(--card);padding:10px;font-weight:800}.map-tab.active{background:var(--accent);color:#fff}.body-map-layout{display:grid;grid-template-columns:minmax(220px,1fr) minmax(230px,1.1fr);gap:15px;align-items:center}.body-map-stage{background:radial-gradient(circle,var(--soft),transparent 69%);border-radius:28px}.body-map-svg{width:100%;max-height:500px}.body-outline{fill:none;stroke:var(--muted);stroke-width:4;stroke-linecap:round;opacity:.45}.svg-zone{cursor:pointer}.zone-shape{fill:var(--card);stroke:var(--line);stroke-width:2}.svg-zone:hover .zone-shape,.zone-shape.active-zone{fill:var(--soft);stroke:var(--accent);stroke-width:4}.svg-zone text{font-size:9px;font-weight:900;text-anchor:middle;fill:var(--ink);pointer-events:none}.zone-title{text-align:center;font-size:1.25rem;font-weight:900;color:var(--accent);margin-bottom:12px}.emotion-orbit{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.emotion-bubble{min-height:86px;border:2px solid var(--line);border-radius:50%;background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:850}.bubble-icon{font-size:1.7rem}.compass-wrap{position:relative;width:min(100%,560px);aspect-ratio:1;margin:auto;border:2px solid var(--line);border-radius:24px;overflow:hidden}.axis{position:absolute;background:var(--muted);opacity:.45}.axis-h{left:7%;right:7%;top:50%;height:2px}.axis-v{top:7%;bottom:7%;left:50%;width:2px}.axis-label{position:absolute;font-size:.66rem;font-weight:900;color:var(--muted)}.axis-label.top{top:2%;left:50%;transform:translateX(-50%)}.axis-label.bottom{bottom:2%;left:50%;transform:translateX(-50%)}.axis-label.left{left:0;top:50%;transform:translateY(-50%) rotate(-90deg)}.axis-label.right{right:0;top:50%;transform:translateY(-50%) rotate(90deg)}.compass-emotion{position:absolute;transform:translate(-50%,-50%);width:70px;height:70px;border:2px solid var(--line);border-radius:50%;background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center}.compass-emotion span{font-size:1.3rem}.compass-emotion small{font-size:.65rem}.emotion-hero{display:flex;align-items:center;gap:14px;background:var(--soft);border-radius:18px;padding:14px;margin:12px 0}.emotion-hero>span{font-size:2.6rem}.visual-sequence{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:7px;align-items:stretch}.sequence-step{border:1px solid var(--line);border-radius:16px;padding:11px;text-align:center;display:flex;flex-direction:column;gap:5px}.sequence-step strong{color:var(--accent);font-size:.75rem}.visual-sequence>b{display:grid;place-items:center;color:var(--accent)}.mini-body-and-needs{display:grid;grid-template-columns:170px 1fr;gap:15px;align-items:center;margin:15px 0}.need-tiles{display:grid;gap:8px}.need-tile{border:1px solid var(--line);border-radius:14px;padding:10px}.symptom-pictos{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.symptom-card{border:1px solid var(--line);border-radius:15px;padding:10px;display:flex;align-items:center;gap:9px}.symptom-card>span{width:32px;height:32px;border-radius:50%;background:var(--soft);color:var(--accent);display:grid;place-items:center;font-weight:900;flex:0 0 auto}@media(max-width:560px){.body-map-layout{grid-template-columns:1fr}.emotion-orbit{grid-template-columns:repeat(3,1fr)}.emotion-bubble{min-height:75px;font-size:.72rem}.compass-emotion{width:58px;height:58px}.visual-sequence{grid-template-columns:1fr}.visual-sequence>b{transform:rotate(90deg)}.mini-body-and-needs{grid-template-columns:105px 1fr}.symptom-pictos{grid-template-columns:1fr}}
+/* V5.2 — corps humain réaliste et boussole sans chevauchement */
+.realistic-map-card{overflow:hidden}
+.real-map-layout{display:grid;grid-template-columns:minmax(260px,1.15fr) minmax(230px,.85fr);gap:18px;align-items:center}
+.body-view-switch{display:flex;justify-content:center;gap:8px;margin:8px 0 12px}
+.body-view-switch button{border:1px solid var(--line);border-radius:999px;padding:8px 18px;background:var(--card);font-weight:800}
+.body-view-switch button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.anatomy-stage{display:grid;place-items:center}
+.real-body-frame{position:relative;width:100%;max-width:390px;aspect-ratio:.58;overflow:hidden;border-radius:28px;background:linear-gradient(180deg,#eef3f5,#dfe8eb);border:1px solid var(--line)}
+.real-body-image{position:absolute;height:100%;width:auto;max-width:none;top:0;filter:saturate(.72) contrast(.97)}
+.real-body-frame.front .real-body-image{left:0;transform:translateX(-1%) scale(1.03);transform-origin:left center}
+.real-body-frame.back .real-body-image{right:0;transform:translateX(1%) scale(1.03);transform-origin:right center}
+.body-crop{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(243,247,248,.96) 0 4%,transparent 12% 88%,rgba(243,247,248,.96) 96% 100%)}
+.anatomy-overlay{position:absolute;inset:0}
+.anatomy-zone{position:absolute;transform:translate(-50%,-50%);border:2px solid rgba(40,95,118,.55);background:rgba(40,95,118,.13);border-radius:45%;color:transparent;min-width:20px;min-height:20px}
+.anatomy-zone:hover,.anatomy-zone:focus,.anatomy-zone.selected{background:rgba(40,95,118,.36);border-color:var(--accent);box-shadow:0 0 0 3px rgba(255,255,255,.75)}
+.anatomy-zone span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:.62rem;color:var(--ink);font-weight:900;background:rgba(255,255,255,.84);padding:2px 4px;border-radius:5px;white-space:nowrap;opacity:0}
+.anatomy-zone.selected span,.anatomy-zone:focus span{opacity:1}
+.view-caption{position:absolute;bottom:9px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.88);border:1px solid var(--line);border-radius:999px;padding:5px 10px;font-size:.68rem;font-weight:900;color:var(--accent)}
+.image-credit{font-size:.76rem;color:var(--muted);margin-top:12px}.image-credit summary{cursor:pointer;text-align:center}.image-credit p{line-height:1.35}
+
+/* Boussole à quatre secteurs : emplacements fixes */
+.compass-v52{position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;width:min(100%,650px);margin:0 auto;padding:42px;border-radius:28px;background:var(--soft);border:1px solid var(--line)}
+.compass-sector{position:relative;min-height:230px;border:2px solid var(--line);border-radius:22px;padding:42px 12px 12px;background:var(--card);transition:opacity .18s}
+.compass-sector h3{position:absolute;top:9px;left:12px;margin:0;font-size:.8rem;color:var(--accent);line-height:1.05}.compass-sector h3 small{font-weight:600;color:var(--muted)}
+.sector-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;height:100%;align-content:center}.sector-grid.one{grid-template-columns:1fr;place-items:center}
+.compass-emotion{position:static!important;transform:none!important;width:auto!important;height:auto!important;min-height:74px;border:2px solid var(--line);border-radius:16px;background:#fbfcfc;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:7px;color:var(--ink)}
+.compass-emotion:hover,.compass-emotion:focus{border-color:var(--accent);background:var(--soft)}
+.compass-symbol{font-size:1.45rem}.compass-emotion strong{font-size:.76rem;text-align:center}
+.compass-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:92px;height:92px;border-radius:50%;display:grid;place-items:center;text-align:center;background:var(--accent);color:#fff;border:6px solid var(--soft);font-size:.7rem;font-weight:900;z-index:4}
+.compass-axis{position:absolute;display:flex;justify-content:space-between;color:var(--muted);font-size:.65rem;font-weight:900;pointer-events:none}
+.compass-axis.vertical{top:8px;bottom:8px;left:50%;flex-direction:column;align-items:center;transform:translateX(-50%)}
+.compass-axis.horizontal{left:8px;right:8px;top:50%;transform:translateY(-50%)}
+.compass-controls{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:14px auto 0;max-width:650px}
+.compass-filter{border:1px solid var(--line);border-radius:13px;background:var(--card);padding:10px;font-weight:750}.compass-filter.reset{grid-column:1/-1}
+.compass-sector.dimmed{opacity:.18}
+.mini-real-body-and-needs{display:grid;grid-template-columns:190px 1fr;gap:16px;align-items:center;margin:16px 0}
+.mini-real-body .real-body-frame{max-height:330px}.mini-real-body .anatomy-zone span,.mini-real-body .view-caption{display:none}
+@media(max-width:620px){
+ .real-map-layout{grid-template-columns:1fr}.real-body-frame{max-width:350px}
+ .compass-v52{padding:32px 7px;gap:7px}.compass-sector{min-height:215px;padding:38px 6px 8px}.sector-grid{gap:5px}
+ .compass-emotion{min-height:70px;padding:4px}.compass-emotion strong{font-size:.66rem}.compass-center{width:72px;height:72px;font-size:.58rem;border-width:4px}
+ .compass-axis{font-size:.55rem}.mini-real-body-and-needs{grid-template-columns:120px 1fr}
+}
+@media(max-width:390px){
+ .compass-v52{padding-left:3px;padding-right:3px}.compass-sector{min-height:205px}
+ .compass-emotion strong{font-size:.6rem}.compass-symbol{font-size:1.2rem}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div><p>QUESTIONNAIRE D’AIDE À L’IDENTIFICATION</p><h1>GPS émotionnel V5.2</h1></div>
+  <button id="settings" class="square" aria-label="Réglages">Aa</button>
+</header>
+<main id="app"></main>
+<nav>
+  <button data-view="home" class="active">Accueil</button>
+  <button data-view="map">Carte</button>
+  <button data-view="history">Historique</button>
+  <button data-view="science">Méthode</button>
+</nav>
+<dialog id="settingsDialog">
+  <form method="dialog">
+    <div class="row"><h2>Affichage</h2><button value="cancel" class="square">×</button></div>
+    <label class="field">Taille du texte
+      <select id="font"><option value="normal">Normale</option><option value="large">Grande</option><option value="xlarge">Très grande</option></select>
+    </label>
+    <label class="check"><input id="contrast" type="checkbox"> Contraste renforcé</label>
+    <label class="check"><input id="motion" type="checkbox"> Réduire les animations</label>
+    <button id="saveSettings" class="primary">Enregistrer</button>
+  </form>
+</dialog>
+<script>'use strict';
+const STATES={"joy": {"name": "Joie", "kind": "Émotion probable", "icon": "☀", "function": "Signale une situation favorable et peut favoriser l’approche, l’exploration ou le partage.", "needs": ["continuer", "profiter", "partager"]}, "anger": {"name": "Colère", "kind": "Émotion probable", "icon": "⚡", "function": "Mobilise l’énergie face à un obstacle, une injustice ou une limite dépassée.", "needs": ["limite", "espace", "justice", "action claire"]}, "fear": {"name": "Peur", "kind": "Émotion probable", "icon": "△", "function": "Prépare à se protéger rapidement face à un danger présent.", "needs": ["sécurité", "distance", "aide immédiate"]}, "anxiety": {"name": "Anxiété", "kind": "Émotion probable", "icon": "≈", "function": "Maintient la vigilance face à une menace possible ou anticipée.", "needs": ["prévisibilité", "information", "plan", "réassurance"]}, "disgust": {"name": "Dégoût", "kind": "Émotion probable", "icon": "⊘", "function": "Protège d’un contact, d’une odeur, d’un goût ou d’une situation perçue comme nocive.", "needs": ["éloignement", "arrêt", "protection"]}, "sadness": {"name": "Tristesse", "kind": "Émotion probable", "icon": "☂", "function": "Favorise le ralentissement, la récupération et la recherche de soutien.", "needs": ["repos", "soutien", "temps", "réconfort"]}, "shame": {"name": "Honte", "kind": "Émotion probable", "icon": "○", "function": "Peut apparaître lors d’une exposition sociale difficile et favoriser le retrait ou la réparation.", "needs": ["respect", "sécurité relationnelle", "réparation"]}, "calm": {"name": "Apaisement", "kind": "État de régulation probable", "icon": "≈", "function": "Correspond à une baisse de l’activation et à une restauration des ressources.", "needs": ["maintenir le calme", "repos", "sécurité"]}, "sensory": {"name": "Surcharge sensorielle", "kind": "État non émotionnel possible", "icon": "✦", "function": "Indique surtout que les stimulations dépassent les capacités disponibles du moment.", "needs": ["silence", "obscurité", "distance", "réduction des stimulations"]}, "fatigue": {"name": "Fatigue / vide", "kind": "État non émotionnel possible", "icon": "◐", "function": "Décrit principalement un manque de ressources, un ralentissement ou un épuisement.", "needs": ["pause", "repos", "sommeil", "réduction de la demande"]}};
+const ALL_QUESTIONS=[{"id": "medical", "stage": "Sécurité", "q": "Ai-je maintenant un malaise, une forte douleur dans la poitrine ou beaucoup de mal à respirer ?", "help": "Si oui, le questionnaire s’arrête. Ces signes doivent être évalués médicalement.", "safety": true, "mode": "short"}, {"id": "sound", "stage": "Sens", "q": "Les sons me gênent-ils plus que d’habitude ?", "tier": "core", "mode": "short", "w": {"sensory": 5}}, {"id": "light", "stage": "Sens", "q": "La lumière me gêne-t-elle maintenant ?", "tier": "core", "mode": "short", "w": {"sensory": 5}}, {"id": "touch", "stage": "Sens", "q": "Un vêtement, un contact ou une texture est-il difficile à supporter ?", "tier": "core", "mode": "full", "w": {"sensory": 5, "disgust": 1}}, {"id": "silence", "stage": "Sens", "q": "Ai-je besoin de silence maintenant ?", "tier": "core", "mode": "short", "w": {"sensory": 6}}, {"id": "dark", "stage": "Sens", "q": "Ai-je besoin de moins de lumière maintenant ?", "tier": "core", "mode": "full", "w": {"sensory": 5}}, {"id": "sudden_fatigue", "stage": "Énergie", "q": "Suis-je soudain très fatigué ?", "tier": "core", "mode": "short", "w": {"fatigue": 6, "sadness": 1}}, {"id": "heavy_body", "stage": "Corps entier", "q": "Mon corps me paraît-il lourd ?", "tier": "core", "mode": "short", "w": {"fatigue": 5, "sadness": 4}}, {"id": "low_limbs", "stage": "Bras et jambes", "q": "Mes bras ou mes jambes manquent-ils d’énergie ?", "tier": "core", "mode": "full", "w": {"fatigue": 4, "sadness": 4}}, {"id": "still_body", "stage": "Corps entier", "q": "Ai-je du mal à mettre mon corps en mouvement ?", "tier": "core", "mode": "full", "w": {"fatigue": 4, "sadness": 2}}, {"id": "empty", "stage": "Corps entier", "q": "Est-ce que je ressens une sensation de vide ?", "tier": "core", "mode": "short", "w": {"fatigue": 6, "sadness": 2}}, {"id": "easy_breath", "stage": "Respiration", "q": "Est-ce que je respire facilement ?", "tier": "core", "mode": "short", "w": {"calm": 5, "joy": 2}}, {"id": "wide_breath", "stage": "Respiration", "q": "Ma respiration est-elle ample et régulière ?", "tier": "core", "mode": "full", "w": {"calm": 5, "joy": 2}}, {"id": "soft_warmth", "stage": "Corps entier", "q": "Est-ce que je sens une chaleur douce dans mon corps ?", "tier": "core", "mode": "short", "w": {"calm": 6, "joy": 2}}, {"id": "relaxed_muscles", "stage": "Muscles", "q": "Mes muscles sont-ils relâchés ?", "tier": "research", "mode": "full", "w": {"calm": 3}}, {"id": "pleasant_energy", "stage": "Bras et jambes", "q": "Ai-je une énergie agréable dans les bras ou les jambes ?", "tier": "core", "mode": "short", "w": {"joy": 6}}, {"id": "upper_warmth", "stage": "Poitrine et tête", "q": "Est-ce que je sens une chaleur agréable dans la poitrine ou la tête ?", "tier": "core", "mode": "full", "w": {"joy": 5, "calm": 2}}, {"id": "spont_smile", "stage": "Visage", "q": "Est-ce que les coins de ma bouche remontent sans que je le décide ?", "tier": "research", "mode": "full", "w": {"joy": 2}}, {"id": "jaw", "stage": "Visage", "q": "Ma mâchoire est-elle serrée ?", "tier": "core", "mode": "short", "w": {"anger": 6}}, {"id": "fists", "stage": "Mains", "q": "Mes mains sont-elles fermées ou très serrées ?", "tier": "core", "mode": "full", "w": {"anger": 6}}, {"id": "arm_tension", "stage": "Bras", "q": "Mes bras sont-ils tendus ?", "tier": "core", "mode": "full", "w": {"anger": 5}}, {"id": "head_tension", "stage": "Tête", "q": "Est-ce que je sens une forte tension dans la tête ?", "tier": "core", "mode": "full", "w": {"anger": 4}}, {"id": "body_heat", "stage": "Corps entier", "q": "Est-ce que j’ai chaud alors que la pièce n’est pas plus chaude ?", "tier": "core", "mode": "short", "w": {"anger": 4, "shame": 1}}, {"id": "heart_fast_activation", "stage": "Poitrine", "q": "Mon cœur bat-il plus vite que d’habitude ?", "tier": "research", "mode": "short", "w": {"anger": 2, "fear": 3, "anxiety": 3, "shame": 1}}, {"id": "fast_breath", "stage": "Respiration", "q": "Est-ce que je respire plus vite que d’habitude ?", "tier": "research", "mode": "full", "w": {"anger": 2, "fear": 3, "anxiety": 3}}, {"id": "tight_chest", "stage": "Poitrine", "q": "Ma poitrine est-elle serrée ?", "tier": "core", "mode": "short", "w": {"fear": 5, "anxiety": 4}}, {"id": "short_breath", "stage": "Respiration", "q": "Mon souffle est-il court ?", "tier": "core", "mode": "short", "w": {"fear": 6, "anxiety": 4}}, {"id": "weak_legs", "stage": "Jambes", "q": "Mes jambes semblent-elles faibles ou prêtes à lâcher ?", "tier": "core", "mode": "short", "w": {"fear": 7}}, {"id": "tremble", "stage": "Corps ou mains", "q": "Est-ce que mes mains ou mon corps tremblent ?", "tier": "research", "mode": "full", "w": {"fear": 4, "anxiety": 3}}, {"id": "cold_sweat", "stage": "Peau", "q": "Est-ce que je transpire ou que j’ai des frissons sans raison évidente ?", "tier": "research", "mode": "full", "w": {"fear": 3, "anxiety": 3}}, {"id": "belly_knot", "stage": "Ventre", "q": "Est-ce que je sens un nœud dans le ventre ?", "tier": "core", "mode": "short", "w": {"anxiety": 6}}, {"id": "chest_pressure", "stage": "Poitrine", "q": "Est-ce que je sens une pression dans la poitrine ?", "tier": "core", "mode": "full", "w": {"anxiety": 5, "fear": 3}}, {"id": "dry_mouth", "stage": "Bouche", "q": "Ma bouche est-elle plus sèche que d’habitude ?", "tier": "research", "mode": "full", "w": {"anxiety": 2, "fear": 1}}, {"id": "nausea", "stage": "Ventre", "q": "Ai-je la nausée ou l’estomac retourné ?", "tier": "research", "mode": "full", "w": {"disgust": 4, "anxiety": 3, "fear": 1}}, {"id": "general_tension", "stage": "Muscles", "q": "Plusieurs muscles de mon corps sont-ils tendus en même temps ?", "tier": "research", "mode": "full", "w": {"anxiety": 3, "anger": 2}}, {"id": "throat_reaction", "stage": "Gorge", "q": "Est-ce que ma gorge se serre ou réagit fortement ?", "tier": "core", "mode": "full", "w": {"disgust": 5, "fear": 1}}, {"id": "stomach_reaction", "stage": "Estomac", "q": "Est-ce que mon estomac réagit fortement ?", "tier": "core", "mode": "short", "w": {"disgust": 6, "anxiety": 2}}, {"id": "recoil", "stage": "Mouvement", "q": "Est-ce que mon corps recule tout seul ?", "tier": "core", "mode": "full", "w": {"disgust": 6, "shame": 1}}, {"id": "bad_taste_saliva", "stage": "Bouche", "q": "Ai-je un goût désagréable ou plus de salive dans la bouche ?", "tier": "research", "mode": "full", "w": {"disgust": 3}}, {"id": "throat_knot", "stage": "Gorge", "q": "Ma gorge est-elle nouée ?", "tier": "core", "mode": "short", "w": {"sadness": 6, "fear": 1}}, {"id": "eyes_wet", "stage": "Yeux", "q": "Mes yeux sont-ils humides ou ai-je envie de pleurer ?", "tier": "research", "mode": "full", "w": {"sadness": 4}}, {"id": "slow_movement", "stage": "Mouvement", "q": "Est-ce que mes mouvements sont plus lents que d’habitude ?", "tier": "research", "mode": "full", "w": {"sadness": 3, "fatigue": 3}}, {"id": "chest_ache", "stage": "Poitrine", "q": "Est-ce que je sens une douleur diffuse ou un poids dans la poitrine ?", "tier": "research", "mode": "full", "w": {"sadness": 3, "anxiety": 2}}, {"id": "face_hot", "stage": "Visage", "q": "Mon visage est-il chaud ?", "tier": "core", "mode": "short", "w": {"shame": 6, "anger": 1}}, {"id": "face_red", "stage": "Visage", "q": "Mon visage est-il plus rouge que d’habitude ?", "tier": "core", "mode": "full", "w": {"shame": 5, "anger": 1}}, {"id": "body_shrink", "stage": "Corps entier", "q": "Est-ce que mon corps se replie ou prend moins de place ?", "tier": "core", "mode": "full", "w": {"shame": 6, "sadness": 1}}, {"id": "stomach_shame", "stage": "Ventre", "q": "Est-ce que mon ventre devient inconfortable quand je pense au regard des autres ?", "tier": "research", "mode": "full", "w": {"shame": 3, "anxiety": 2}}, {"id": "danger_now", "stage": "Situation", "q": "Un danger est-il présent ici, maintenant ?", "tier": "context", "mode": "short", "w": {"fear": 8}}, {"id": "future_threat", "stage": "Situation", "q": "Est-ce que je pense à un problème qui pourrait arriver plus tard ?", "tier": "context", "mode": "short", "w": {"anxiety": 8}}, {"id": "obstacle_limit", "stage": "Situation", "q": "Quelqu’un ou quelque chose bloque-t-il ce que je veux faire, ou dépasse-t-il une limite ?", "tier": "context", "mode": "short", "w": {"anger": 8}}, {"id": "loss", "stage": "Situation", "q": "Est-ce que je viens de perdre quelque chose d’important, ou d’être déçu ?", "tier": "context", "mode": "full", "w": {"sadness": 8}}, {"id": "social_exposure", "stage": "Situation", "q": "Est-ce que je pense avoir fait une erreur devant quelqu’un ?", "tier": "context", "mode": "short", "w": {"shame": 8}}, {"id": "noxious", "stage": "Situation", "q": "Est-ce que quelque chose me paraît sale, mauvais, contaminé ou impossible à avaler ?", "tier": "context", "mode": "full", "w": {"disgust": 8}}, {"id": "favorable", "stage": "Situation", "q": "Est-ce que quelque chose d’agréable ou d’attendu vient de se produire ?", "tier": "context", "mode": "full", "w": {"joy": 8}}];
+const SHORT_IDS=new Set(["belly_knot", "body_heat", "danger_now", "easy_breath", "empty", "face_hot", "future_threat", "heart_fast_activation", "heavy_body", "jaw", "light", "medical", "obstacle_limit", "pleasant_energy", "short_breath", "silence", "social_exposure", "soft_warmth", "sound", "stomach_reaction", "sudden_fatigue", "throat_knot", "tight_chest", "weak_legs"]);
+const HISTORY_KEY='gps-emotionnel-v5-history',SETTINGS_KEY='gps-emotionnel-v5-settings';
+const MAP_VISUAL={"joy": {"icon": "☀", "v": 0.78, "a": 0.72, "zones": ["chest", "head", "arms", "legs"], "action": "continuer ou partager"}, "anger": {"icon": "⚡", "v": -0.72, "a": 0.88, "zones": ["face", "chest", "arms", "head"], "action": "poser une limite"}, "fear": {"icon": "△", "v": -0.82, "a": 0.92, "zones": ["chest", "breath", "legs"], "action": "chercher la sécurité"}, "anxiety": {"icon": "≈", "v": -0.67, "a": 0.72, "zones": ["chest", "belly", "breath"], "action": "rendre la suite prévisible"}, "disgust": {"icon": "⊘", "v": -0.78, "a": 0.46, "zones": ["throat", "belly", "mouth"], "action": "s’éloigner"}, "sadness": {"icon": "☂", "v": -0.72, "a": -0.62, "zones": ["throat", "chest", "body", "arms", "legs", "eyes"], "action": "ralentir ou demander du soutien"}, "shame": {"icon": "○", "v": -0.68, "a": 0.22, "zones": ["face", "belly", "body"], "action": "se protéger ou réparer"}, "calm": {"icon": "≈", "v": 0.72, "a": -0.62, "zones": ["breath", "body"], "action": "maintenir les conditions"}, "sensory": {"icon": "✦", "v": -0.58, "a": 0.82, "zones": ["senses", "head", "body"], "action": "réduire les stimulations"}, "fatigue": {"icon": "◐", "v": -0.22, "a": -0.88, "zones": ["body", "arms", "legs", "head"], "action": "faire une pause"}};
+const REALISTIC_BODY_IMAGE="https://upload.wikimedia.org/wikipedia/commons/6/66/Female-male_front-back_3d-shaded_human_illustration.svg";
+const app=document.getElementById('app');
+const S={view:'home',mode:'short',questions:[],i:0,answers:{},unknown:0,result:null,stopped:false,mapKey:null};
+const esc=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+const history=()=>{try{return JSON.parse(localStorage.getItem(HISTORY_KEY)||'[]')}catch{return[]}};
+function setView(v){S.view=v;document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===v));render()}
+function render(){({home,question,result,map,history:historyView,science,mapDetail}[S.view]||home)()}
+function home(){
+ app.innerHTML=`<section class="card"><p class="eyebrow">VERSION 5 — QUESTIONNAIRE</p><h2>Je décris mon corps. Le GPS propose des hypothèses.</h2>
+ <p>Les signes issus des fiches de la neuropsychologue restent prioritaires. Les signes ajoutés par la recherche ont une pondération plus faible.</p>
+ <div class="grid">
+  <button class="choice" data-mode="short"><strong>Parcours court</strong><small>Environ 3 à 5 minutes. Signes principaux et questions de contexte.</small></button>
+  <button class="choice" data-mode="full"><strong>Parcours complet</strong><small>Environ 7 à 10 minutes. Ajoute des signes corporels complémentaires.</small></button>
+ </div>
+ <div class="notice"><strong>Réponses :</strong> Oui, Non ou Difficile à dire. « Difficile à dire » n’est jamais traité comme « Non ».</div>
+ <button class="secondary" onclick="setView('map')">Voir les émotions recherchées</button></section>`;
+ document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>start(b.dataset.mode));
+}
+function start(mode){
+ S.mode=mode;S.questions=ALL_QUESTIONS.filter(q=>q.safety || mode==='full' || SHORT_IDS.has(q.id));
+ S.i=0;S.answers={};S.unknown=0;S.result=null;S.stopped=false;S.view='question';render();
+}
+function question(){
+ const q=S.questions[S.i],p=Math.round(100*S.i/S.questions.length);
+ app.innerHTML=`<div class="progress-label"><span>Question ${S.i+1} sur ${S.questions.length}</span><span>${p} %</span></div>
+ <div class="progress"><div style="width:${p}%"></div></div>
+ <section class="card qcard"><span class="zone">${esc(q.stage)}</span><h2 class="question">${esc(q.q)}</h2>
+ <p class="help">${esc(q.help||'Répondez seulement pour ce qui est présent maintenant.')}</p>
+ <div class="answers"><button class="answer yes" data-a="yes">Oui</button><button class="answer no" data-a="no">Non</button><button class="answer unsure" data-a="unsure">Difficile à dire</button></div>
+ <div id="confirmation"></div>
+ ${q.tier?`<div class="tier">${q.tier==='core'?'Repère prioritaire des fiches initiales':q.tier==='research'?'Repère complémentaire de la littérature':'Question de contexte'}</div>`:''}</section>`;
+ document.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>answer(b.dataset.a));
+}
+function answer(a){
+ const q=S.questions[S.i];S.answers[q.id]=a;if(a==='unsure')S.unknown++;
+ if(q.safety && a==='yes'){S.stopped=true;return safetyStop()}
+ document.querySelectorAll('[data-a]').forEach(b=>b.disabled=true);
+ document.getElementById('confirmation').innerHTML='<div class="confirmation">✓ Réponse notée</div>';
+ setTimeout(()=>{S.i++;if(S.i>=S.questions.length){S.result=calculate();S.view='result'}render()},260);
+}
+function safetyStop(){
+ app.innerHTML=`<section class="card"><p class="eyebrow">PRIORITÉ À LA SÉCURITÉ</p><h2>J’arrête le questionnaire.</h2>
+ <div class="notice danger">Un malaise, une forte douleur thoracique ou une difficulté respiratoire importante ne doivent pas être classés automatiquement comme une émotion.</div>
+ <p>Demandez une aide médicale adaptée à la situation. En cas d’urgence en France, appelez le 15 ou le 112.</p>
+ <button class="secondary" onclick="setView('home')">Retour à l’accueil</button></section>`;
+}
+function calculate(){
+ const support={},possible={},yesCues={};
+ Object.keys(STATES).forEach(k=>{support[k]=0;possible[k]=0;yesCues[k]=[]});
+ S.questions.forEach(q=>{
+   if(!q.w)return;const a=S.answers[q.id];
+   Object.entries(q.w).forEach(([k,w])=>{
+     if(a!=='unsure')possible[k]+=w;
+     if(a==='yes'){support[k]+=w;yesCues[k].push(q.q)}
+   });
+ });
+ let ratios=Object.keys(STATES).map(k=>({key:k,ratio:possible[k]?support[k]/possible[k]:0,raw:support[k],cues:yesCues[k]})).sort((a,b)=>b.ratio-a.ratio);
+ const sum=ratios.reduce((s,x)=>s+x.ratio,0);
+ let exact=ratios.map(x=>({...x,pct:sum?100*x.ratio/sum:0}));
+ let flo=exact.map(x=>({...x,pct:Math.floor(x.pct)})),rem=100-flo.reduce((s,x)=>s+x.pct,0);
+ exact.map((x,i)=>({i,f:x.pct-Math.floor(x.pct)})).sort((a,b)=>b.f-a.f).slice(0,rem).forEach(x=>flo[x.i].pct++);
+ const answered=S.questions.length-S.unknown,conf=answered?Math.round(100*answered/S.questions.length):0;
+ return{mix:flo,confidence:conf};
+}
+function result(){
+ const v=S.result.mix.filter(x=>x.pct>0).slice(0,6),m=v[0];
+ app.innerHTML=`<section class="card"><p class="eyebrow">PANORAMA DU MOMENT</p><h2>${m?esc(STATES[m.key].name):'État non déterminé'}</h2>
+ <p>Questions avec réponse claire : <strong>${S.result.confidence} %</strong></p>
+ <div class="mix">${v.map(x=>`<div class="mixrow"><strong>${esc(STATES[x.key].name)}</strong><div class="bar"><div style="width:${x.pct}%"></div></div><span class="pct">${x.pct}%</span></div>`).join('')}</div>
+ <div class="notice">Les pourcentages sont des compatibilités relatives entre vos réponses et les hypothèses. Ils ne mesurent pas la quantité biologique d’une émotion.</div>
+ ${m?`<div class="evidence"><h3>${STATES[m.key].icon} ${esc(STATES[m.key].name)}</h3><p>${esc(STATES[m.key].function)}</p><div>${STATES[m.key].needs.map(n=>`<span class="tag">${esc(n)}</span>`).join('')}</div>
+ <h3>Indices que vous avez confirmés</h3>${m.cues.length?m.cues.slice(0,6).map(c=>`<p>✓ ${esc(c)}</p>`).join(''):'<p>Aucun indice net.</p>'}</div>`:''}
+ <label class="field">Intensité globale<input id="intensity" type="range" min="0" max="10" value="5"></label>
+ <label class="field">Situation<input id="context" type="text" placeholder="Ex. après une réunion"></label>
+ <label class="field">Note ou besoin<textarea id="note" placeholder="Facultatif"></textarea></label>
+ <button id="save" class="primary">Enregistrer</button><button class="secondary" onclick="start('${S.mode}')">Recommencer</button></section>`;
+ document.getElementById('save').onclick=save;
+}
+function save(){
+ const h=history();h.unshift({date:new Date().toISOString(),mode:S.mode,intensity:+document.getElementById('intensity').value,context:document.getElementById('context').value.trim(),note:document.getElementById('note').value.trim(),unknown:S.unknown,mix:S.result.mix.map(x=>({key:x.key,pct:x.pct})),answers:S.answers});
+ localStorage.setItem(HISTORY_KEY,JSON.stringify(h.slice(0,250)));alert('Panorama enregistré sur cet appareil.');setView('history');
+}
+function zoneLabel(z){
+ return ({head:"Tête",face:"Visage",throat:"Gorge",chest:"Poitrine",belly:"Ventre / estomac",arms:"Bras et mains",legs:"Jambes",senses:"Sens / environnement",breath:"Respiration",body:"Corps entier",mouth:"Bouche",eyes:"Yeux"})[z]||"Zone";
+}
+function emotionsForZone(z){
+ return Object.entries(MAP_VISUAL).filter(([k,v])=>v.zones.includes(z)).map(([k])=>k);
+}
+function anatomyFigure(selected="chest", view="front"){
+ const zones = view==="front"
+ ? [
+   ["head",50,8,13,12],["face",50,12,11,8],["throat",50,20,8,7],
+   ["chest",50,31,27,19],["belly",50,47,24,18],["arms",20,40,18,43],
+   ["arms",80,40,18,43],["legs",38,75,18,42],["legs",62,75,18,42],
+   ["breath",83,15,13,11],["senses",17,15,13,11]
+ ]
+ : [
+   ["head",50,8,13,12],["throat",50,20,8,7],["chest",50,32,27,20],
+   ["belly",50,49,24,19],["arms",20,40,18,43],["arms",80,40,18,43],
+   ["legs",38,75,18,42],["legs",62,75,18,42],
+   ["breath",83,15,13,11],["senses",17,15,13,11]
+ ];
+ return `<div class="real-body-frame ${view}">
+   <img class="real-body-image" src="${REALISTIC_BODY_IMAGE}" alt="Illustration anatomique réaliste du corps humain, vues de face et de dos">
+   <div class="body-crop body-crop-${view}" aria-hidden="true"></div>
+   <div class="anatomy-overlay">
+    ${zones.map(([z,x,y,w,h])=>`<button class="anatomy-zone ${selected===z?'selected':''}" data-zone="${z}" style="left:${x}%;top:${y}%;width:${w}%;height:${h}%;" aria-label="${zoneLabel(z)}"><span>${zoneLabel(z)}</span></button>`).join("")}
+   </div>
+   <div class="view-caption">${view==="front"?"VUE AVANT":"VUE ARRIÈRE"}</div>
+ </div>`;
+}
+function map(){
+ S.mapZone=S.mapZone||"chest";
+ S.bodyView=S.bodyView||"front";
+ const keys=emotionsForZone(S.mapZone);
+ app.innerHTML=`<section class="card realistic-map-card">
+   <p class="eyebrow">CARTOGRAPHIE CORPORELLE RÉALISTE</p>
+   <h2>Je touche l’endroit où je ressens quelque chose</h2>
+   <p class="map-instruction">L’illustration anatomique sert de repère visuel. Les zones colorées sont tactiles.</p>
+
+   <div class="map-mode-tabs" role="tablist">
+     <button class="map-tab active" data-mode="body">Corps humain</button>
+     <button class="map-tab" data-mode="compass">Boussole</button>
+   </div>
+
+   <div id="bodyPanel">
+     <div class="body-view-switch">
+       <button class="${S.bodyView==='front'?'active':''}" data-viewbody="front">Avant</button>
+       <button class="${S.bodyView==='back'?'active':''}" data-viewbody="back">Arrière</button>
+     </div>
+     <div class="real-map-layout">
+       <div class="anatomy-stage">${anatomyFigure(S.mapZone,S.bodyView)}</div>
+       <div class="zone-result">
+         <div class="zone-title">${zoneLabel(S.mapZone)}</div>
+         <div class="emotion-orbit">
+           ${keys.map(k=>`<button class="emotion-bubble" data-k="${k}">
+             <span class="bubble-icon">${MAP_VISUAL[k].icon}</span>
+             <span>${esc(STATES[k].name)}</span>
+           </button>`).join("")}
+         </div>
+         <p class="map-caption">Une zone corporelle peut correspondre à plusieurs émotions ou états.</p>
+       </div>
+     </div>
+     <details class="image-credit">
+       <summary>Crédit de l’illustration</summary>
+       <p>Illustration 3D du corps humain par Goran tek-en, d’après Human Body.jpg, licence CC BY-SA 4.0, Wikimedia Commons. L’application ajoute uniquement des zones interactives superposées.</p>
+     </details>
+   </div>
+
+   <div id="compassPanel" class="hidden">
+     ${emotionCompass()}
+   </div>
+ </section>`;
+ document.querySelectorAll(".anatomy-zone").forEach(b=>b.addEventListener("click",()=>{S.mapZone=b.dataset.zone;map()}));
+ document.querySelectorAll("[data-viewbody]").forEach(b=>b.addEventListener("click",()=>{S.bodyView=b.dataset.viewbody;map()}));
+ document.querySelectorAll(".emotion-bubble,.compass-emotion").forEach(b=>b.addEventListener("click",()=>{S.mapKey=b.dataset.k;setView("mapDetail")}));
+ document.querySelectorAll(".map-tab").forEach(b=>b.addEventListener("click",()=>switchMapMode(b.dataset.mode)));
+ document.querySelectorAll(".compass-filter").forEach(b=>b.addEventListener("click",()=>applyCompassFilter(b.dataset.filter)));
+}
+function switchMapMode(mode){
+ document.querySelectorAll(".map-tab").forEach(b=>b.classList.toggle("active",b.dataset.mode===mode));
+ document.getElementById("bodyPanel").classList.toggle("hidden",mode!=="body");
+ document.getElementById("compassPanel").classList.toggle("hidden",mode!=="compass");
+}
+function compassCard(k){
+ const s=STATES[k],v=MAP_VISUAL[k];
+ return `<button class="compass-emotion" data-k="${k}">
+   <span class="compass-symbol">${v.icon}</span>
+   <strong>${esc(s.name)}</strong>
+ </button>`;
+}
+function emotionCompass(){
+ return `<div class="compass-v52" role="img" aria-label="Boussole émotionnelle sans chevauchement">
+   <div class="compass-axis vertical"><span>ÉNERGIE FORTE</span><span>ÉNERGIE FAIBLE</span></div>
+   <div class="compass-axis horizontal"><span>DÉSAGRÉABLE</span><span>AGRÉABLE</span></div>
+
+   <section class="compass-sector sector-high-unpleasant">
+     <h3>Énergie forte<br><small>désagréable</small></h3>
+     <div class="sector-grid">
+       ${["fear","anger","anxiety","sensory"].map(compassCard).join("")}
+     </div>
+   </section>
+
+   <section class="compass-sector sector-high-pleasant">
+     <h3>Énergie forte<br><small>agréable</small></h3>
+     <div class="sector-grid one">
+       ${compassCard("joy")}
+     </div>
+   </section>
+
+   <section class="compass-sector sector-low-unpleasant">
+     <h3>Énergie faible<br><small>désagréable</small></h3>
+     <div class="sector-grid">
+       ${["sadness","shame","disgust","fatigue"].map(compassCard).join("")}
+     </div>
+   </section>
+
+   <section class="compass-sector sector-low-pleasant">
+     <h3>Énergie faible<br><small>agréable</small></h3>
+     <div class="sector-grid one">
+       ${compassCard("calm")}
+     </div>
+   </section>
+
+   <div class="compass-center">ÉTAT<br>DU MOMENT</div>
+ </div>
+ <div class="compass-controls">
+   <button class="compass-filter" data-filter="high">J’ai beaucoup d’énergie</button>
+   <button class="compass-filter" data-filter="low">J’ai peu d’énergie</button>
+   <button class="compass-filter" data-filter="unpleasant">C’est désagréable</button>
+   <button class="compass-filter" data-filter="pleasant">C’est agréable</button>
+   <button class="compass-filter reset" data-filter="all">Tout afficher</button>
+ </div>
+ <p class="map-caption">Chaque émotion possède un emplacement fixe. Aucun libellé ne se superpose.</p>`;
+}
+function applyCompassFilter(filter){
+ const sectorMap={
+  high:["sector-high-unpleasant","sector-high-pleasant"],
+  low:["sector-low-unpleasant","sector-low-pleasant"],
+  unpleasant:["sector-high-unpleasant","sector-low-unpleasant"],
+  pleasant:["sector-high-pleasant","sector-low-pleasant"]
+ };
+ document.querySelectorAll(".compass-sector").forEach(s=>{
+   s.classList.toggle("dimmed",filter!=="all"&&!sectorMap[filter].some(c=>s.classList.contains(c)));
+ });
+}
+function symbolForStage(s){
+ return ({Visage:"◉",Tête:"◉",Poitrine:"♡",Respiration:"↕",Ventre:"●",Estomac:"●",Gorge:"│",Mains:"✋",Bras:"╱",Jambes:"∧",Muscles:"⌁",Yeux:"◌",Peau:"≈",Bouche:"◡",Sens:"✦",Situation:"□","Corps entier":"◎","Bras et jambes":"↔",Mouvement:"→",Énergie:"⚡"})[s]||"•";
+}
+function shortenQuestion(q){
+ return q.replace(/^Est-ce que /,"").replace(/^Ai-je /,"").replace(/^Mon /,"").replace(/^Ma /,"").replace(/^Mes /,"").replace(/\?$/,"");
+}
+function mapDetail(){
+ const k=S.mapKey,s=STATES[k],v=MAP_VISUAL[k];
+ const zones=v.zones.filter(z=>["head","face","throat","chest","belly","arms","legs","senses","breath"].includes(z));
+ app.innerHTML=`<section class="card map-detail-visual">
+   <button class="secondary" onclick="setView('map')">← Retour</button>
+   <div class="emotion-hero"><span>${v.icon}</span><div><p class="eyebrow">${esc(s.kind)}</p><h2>${esc(s.name)}</h2></div></div>
+   <div class="visual-sequence">
+     <div class="sequence-step"><span>◉</span><strong>CORPS</strong><small>${zones.map(zoneLabel).join(" · ")}</small></div>
+     <b>→</b>
+     <div class="sequence-step"><span>◇</span><strong>FONCTION</strong><small>${esc(s.function)}</small></div>
+     <b>→</b>
+     <div class="sequence-step"><span>✓</span><strong>ACTION</strong><small>${esc(v.action)}</small></div>
+   </div>
+   <div class="mini-real-body-and-needs">
+     <div class="mini-real-body">${anatomyFigure(zones[0]||"chest","front")}</div>
+     <div class="need-tiles"><h3>Besoins possibles</h3>${s.needs.map(n=>`<div class="need-tile">◇ ${esc(n)}</div>`).join("")}</div>
+   </div>
+   <h3>Signes recherchés</h3>
+   <div class="symptom-pictos">${ALL_QUESTIONS.filter(q=>q.w&&q.w[k]).sort((a,b)=>b.w[k]-a.w[k]).slice(0,8).map(q=>`<div class="symptom-card"><span>${symbolForStage(q.stage)}</span><small>${esc(shortenQuestion(q.q))}</small></div>`).join("")}</div>
+ </section>`;
+ document.querySelectorAll(".mini-real-body .anatomy-zone").forEach(b=>b.disabled=true);
+}
+function historyView(){
+ const h=history();app.innerHTML=`<section class="card"><p class="eyebrow">HISTORIQUE LOCAL</p><h2>Panoramas enregistrés</h2>${h.length?h.map(x=>`<article class="history-item"><div class="row"><strong>${new Date(x.date).toLocaleString('fr-FR')}</strong><span>${x.intensity}/10</span></div><p>${x.mix.filter(y=>y.pct>0).slice(0,4).map(y=>`${STATES[y.key]?.name} ${y.pct}%`).join(' · ')}</p>${x.context?`<small>${esc(x.context)}</small>`:''}</article>`).join(''):'<p>Aucun panorama enregistré.</p>'}</section>`;
+}
+function science(){
+ app.innerHTML=`<section class="card"><p class="eyebrow">MÉTHODE ET LIMITES</p><h2>Ce que fait réellement la V5</h2>
+ <div class="evidence"><h3>1. Priorité aux documents initiaux</h3><p>Les manifestations explicitement présentes dans les fiches de la neuropsychologue reçoivent les poids les plus élevés.</p></div>
+ <div class="evidence"><h3>2. Compléments prudents</h3><p>Fréquence cardiaque, tremblements, transpiration, bouche sèche, nausée, larmes et ralentissement sont ajoutés comme indices complémentaires. Ils sont moins pondérés car ils se chevauchent fortement entre émotions.</p></div>
+ <div class="evidence"><h3>3. Absence de signal ≠ absence d’émotion</h3><p>Une réponse « Non » ne retire pas de points. Une réponse « Difficile à dire » est traitée comme une donnée manquante et réduit la confiance.</p></div>
+ <div class="evidence"><h3>4. Personnalisation nécessaire</h3><p>Les cartes corporelles sont des tendances de groupe. L’historique doit progressivement aider à reconnaître le profil propre de l’utilisateur.</p></div>
+ <div class="notice">La V5 est un outil d’auto-observation. Elle n’est ni un test diagnostique, ni un dispositif médical validé.</div></section>`;
+}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>setView(b.dataset.view));
+const dlg=document.getElementById('settingsDialog');
+document.getElementById('settings').onclick=()=>{loadSettings();dlg.showModal()};
+document.getElementById('saveSettings').onclick=()=>{const o={font:font.value,contrast:contrast.checked,motion:motion.checked};localStorage.setItem(SETTINGS_KEY,JSON.stringify(o));apply(o);dlg.close()};
+function loadSettings(){let o={};try{o=JSON.parse(localStorage.getItem(SETTINGS_KEY)||'{}')}catch{};font.value=o.font||'normal';contrast.checked=!!o.contrast;motion.checked=!!o.motion;apply(o)}
+function apply(o){document.body.classList.toggle('font-large',o.font==='large');document.body.classList.toggle('font-xlarge',o.font==='xlarge');document.body.classList.toggle('high-contrast',!!o.contrast);document.body.classList.toggle('reduce-motion',!!o.motion)}
+
+loadSettings();render();
+</script>
+</body></html>
